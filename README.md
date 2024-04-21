@@ -1,6 +1,6 @@
 # kuma-push
 
-A docker image to use push healthchecks of uptime kuma, just use this compose file:
+A docker image to use push healthchecks of uptime kuma using curl, just use this compose file:
 
 ```yaml
 services:
