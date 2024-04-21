@@ -1,18 +1,18 @@
 # ipv64-updater
 
-This docker image connects to ipv64 using curl to update your DDNS IP, just use this compose file:
+A docker image to use push healthchecks of uptime kuma, just use this compose file:
 
 ```yaml
 services:
-  ipv64-updater:
-    container_name: ipv64-updater
-    image: zoeyvid/ipv64-updater
+  kuma-push:
+    container_name: kuma-push
+    image: zoeyvid/kuma-push
     restart: always
-    network_mode: host                         # you can use bridge if it supports IPv6
+    network_mode: bridge
     environment:
-      - "TZ=Europe/Berlin"                     # your timezone
-      - "DUK=r23jLIKr6IQwrlU6Wcv4ZxrJePxbd57t" # your Domain Update Token (invalid example)
-#      - "UI=5m"                               # interval to update DDNS
-#      - "IPv4=true"                           # enable/disable IPv4
-#      - "IPv6=true"                           # enable/disable IPv6
+      - "TZ=Europe/Berlin"                                   # your timezone
+      - "URL=https://status.example.org/api/push/E5JOgXP8rK" # your uptime kuma push URL
+#      - "UI=5m"                                             # interval to update DDNS
 ```
+
+you need to change the URL
